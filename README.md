@@ -18,5 +18,6 @@ A short, atmospheric storybook game about squirrels, storms, and strange friends
 
 ## 🙏 Credits
 Created by Anmol Shah
+
 Art generated using AI  
 Inspired by nature, surrealism, and animated fables
