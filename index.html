@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Squirrels in Paradise</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    #story-box {
+      max-width: 90vw;
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      padding: 1.5rem;
+      position: relative;
+      z-index: 1;
+      word-wrap: break-word;
+      line-height: 1.5;
+    }
+    #bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+      filter: brightness(1);
+      z-index: 0;
+      display: none;
+    }
+  </style>
+</head>
+<body onclick="advanceStory()">
+  <img id="bg-image" src="https://i.imgur.com/FNGbri5.jpg" alt="background" />
+  <div id="story-box">Loading...</div>
+  <script>
+    const slides = [
+      "There were a bunch of squirrels in Saint Brunswick. They loved eating food...",
+      "A lady was in charge of feeding them. She had a lot of admirers...",
+      "Suddenly, a tornado struck the pepperfields. The lady feared for her squirrels...",
+      "\"Help me, kind strangers,\" she said. The strangers fled in fear...",
+      "She was left alone. Except for one squirrel. It looked into her eyes and said...",
+      "\"It’s okay. I’ll keep you safe and warm.\" But… was she just imagining it?",
+      "She ran with the squirrel. The people followed. The squirrel led everyone to safety...",
+      "The tornado passed. Everyone lived. They cheered for the woman and the glowing squirrel...",
+      "\"What did we learn?\" she asked. The squirrel stared... and disappeared underground...",
+      "But did the squirrel really disappear? Only the lady knew the truth.",
+      "Made by Anmol Shah — <a href='https://www.linkedin.com/in/anmolshah/' target='_blank' style='color:lightblue;'>View My LinkedIn</a>"
+    ];
+
+    let index = -1;
+    const storyBox = document.getElementById("story-box");
+    const bgImage = document.getElementById("bg-image");
+
+    function nextSlide() {
+      if (index < slides.length) {
+        const line = slides[index];
+        storyBox.innerHTML = line;
+        if (index !== 10) speak(stripTags(line));
+        if (index === 0) bgImage.src = 'https://i.imgur.com/Khi2iFO.jpeg';
+        else if (index === 1) bgImage.src = 'https://i.imgur.com/09rxGT8.jpeg';
+        else if (index === 2) bgImage.src = 'https://i.imgur.com/lli2GDg.jpeg';
+        else if (index === 3) bgImage.src = 'https://i.imgur.com/cwX7B3V.jpeg';
+        else if (index === 4) bgImage.src = 'https://i.imgur.com/43AopCo.jpeg';
+        else if (index === 5) bgImage.src = 'https://i.imgur.com/lVaA3Pi.jpeg';
+        else if (index === 6) bgImage.src = 'https://i.imgur.com/pCLNFNB.jpeg';
+        else if (index === 7) bgImage.src = 'https://i.imgur.com/bt3fvDw.jpeg';
+        else if (index === 8) bgImage.src = 'https://i.imgur.com/bhOHclW.jpeg';
+        else if (index === 9) bgImage.src = 'https://i.imgur.com/FNGbri5.jpg';
+        else if (index === 10) bgImage.style.display = 'none';
+
+        if (index >= 0 && index <= 9) bgImage.style.display = 'block';
+        else bgImage.style.display = 'none';
+
+        index++;
+      }
+    }
+
+    function advanceStory() {
+      if (index === -1) {
+        storyBox.innerText = "Squirrels in Paradise — Tap to begin.";
+        bgImage.src = 'https://i.imgur.com/jZNJy9y.jpeg';
+        bgImage.style.display = 'block';
+        index++;
+        return;
+      }
+      nextSlide();
+    }
+
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      const british = voices.find(v => v.name.toLowerCase().includes('brian') || v.name.toLowerCase().includes('attenborough') || v.lang === 'en-GB');
+      if (british) utter.voice = british;
+      utter.rate = 0.85;
+      utter.pitch = 0.8;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utter);
+    }
+
+    function stripTags(html) {
+      let tmp = document.createElement("DIV");
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || "";
+    }
+
+    function waitForVoices(callback) {
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length) {
+        callback();
+      } else {
+        window.speechSynthesis.onvoiceschanged = () => callback();
+      }
+    }
+
+    waitForVoices(() => {
+      advanceStory();
+    });
+  </script>
+</body>
+</html>
