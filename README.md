@@ -9,7 +9,7 @@ A short, atmospheric storybook game about squirrels, storms, and strange friends
 🖼️ Accompanied by painterly, AI-generated visuals.
 
 ## 🎮 Play It Now
-👉 [Live on GitHub Pages](https://shadohead55.github.io/squirrels-in-paradise)
+👉 [Live on GitHub Pages](https://shadohead55.github.io/Squirrels-in-Paradise/)
 
 ## 🛠 How It Works
 - Built with pure HTML, CSS, and JavaScript
