@@ -5,8 +5,9 @@ A short, atmospheric storybook game about squirrels, storms, and strange friends
 
 🌀 A tornado threatens Saint Brunswick.  
 🌰 A woman who feeds squirrels must decide who she wants to save.  
-🎙️ Narrated with a soothing British voice.  
+🎙️ Narrated with a soothing British voice.
 🖼️ Accompanied by painterly, AI-generated visuals.
+✨ Smooth fade transitions and keyboard controls for a more polished feel.
 
 ## 🎮 Play It Now
 👉 [Live on GitHub Pages](https://shadohead55.github.io/Squirrels-in-Paradise/)
